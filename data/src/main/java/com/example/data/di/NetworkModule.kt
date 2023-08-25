@@ -2,6 +2,7 @@ package com.example.data.di
 
 import com.example.data.movies.service.MoviesService
 import com.example.data.utils.ConstantData.Generals.BASE_URL
+import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -16,6 +17,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
+    @Provides
+    @Singleton
+    fun provideFirebaseDatabase(): FirebaseDatabase {
+        return FirebaseDatabase.getInstance()
+    }
     @Provides
     fun provideGson(): Gson {
         return GsonBuilder()

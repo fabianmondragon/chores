@@ -5,5 +5,6 @@ data class SigInUi(
     var messageToShow: String = "",
     var showIsLoading: Boolean = false,
     var showErrorInField: Boolean = false,
-    var goToMovies: Boolean = false
+    var goToMovies: Boolean = false,
+    var email: String= ""
 )

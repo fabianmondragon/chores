@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.katamovies.chores.fragment.ChoreFragment
 import com.example.katamovies.movies.screen.MoviesFragment
 import com.example.katamovies.sigin.SigInFragment
 import com.example.katamovies.sigup.SigUpFragment
@@ -55,7 +56,8 @@ fun setupNavigation() {
             arguments = listOf(navArgument("sigUpUser") { type = NavType.StringType })
         ) { navBackStackEntry ->
             val argValue = navBackStackEntry.arguments?.getString("sigUpUser")
-            goToSigIn(navController, argValue)
+            //goToSigIn(navController, argValue)
+            goToChoresFragment(navController = navController, email = "mondra10@gmail.com")
         }
 
         composable(
@@ -69,6 +71,14 @@ fun setupNavigation() {
         ) {
             goToMoviesFragment(navController)
         }
+
+        composable(
+            route = "${Route.Chores.route}/{email}",
+            arguments = listOf(navArgument("email") { type = NavType.StringType })
+        ) { navBackStactEntry ->
+            val argValue = navBackStactEntry.arguments?.getString("email")
+            goToChoresFragment(navController, argValue!!)
+        }
     }
 }
 
@@ -80,6 +90,11 @@ private fun goToSigUp(navController: NavController) {
 @Composable
 private fun goToMoviesFragment(navController: NavHostController) {
     MoviesFragment(navController = navController)
+}
+
+@Composable
+private fun goToChoresFragment(navController: NavHostController, email: String) {
+    ChoreFragment(navController = navController, email = email )
 }
 
 @Composable

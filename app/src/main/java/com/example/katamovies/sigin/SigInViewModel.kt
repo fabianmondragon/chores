@@ -44,7 +44,8 @@ class SigInViewModel @Inject constructor(
                             SigInUi(
                                 showIsLoading = false,
                                 showMessageFromSigUp = false,
-                                goToMovies = true
+                                goToMovies = true,
+                                email =  email
                             )
                     }
                     is ResultMovies.Error -> {

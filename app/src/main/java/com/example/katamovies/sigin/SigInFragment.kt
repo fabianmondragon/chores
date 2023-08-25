@@ -25,7 +25,10 @@ fun SigInFragment(
         sigInViewModel = sigInViewModel,
         resultToShowMessage
     )
-    gotToMovies(navController, resultToShowMessage.goToMovies)
+    goToChores(navController = navController,
+        goToChores = resultToShowMessage.goToMovies,
+        email = resultToShowMessage.email)
+    //gotToMovies(navController, resultToShowMessage.goToMovies)
 }
 
 @Composable
@@ -55,6 +58,16 @@ fun tryToSigIn(
 
 fun goToSigUp(navController: NavController) {
     navController.navigate(Route.SigUp.route)
+}
+@Composable
+fun goToChores (navController: NavController, goToChores: Boolean, email: String) {
+    if (goToChores) {
+        LaunchedEffect(Unit) {
+            navController.navigate("${Route.Chores.route}/$email") {
+                popUpTo(Route.Chores.route) { inclusive = true }
+            }
+        }
+    }
 }
 
 @Composable
