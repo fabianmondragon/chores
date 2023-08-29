@@ -25,7 +25,7 @@ class MoviesViewModel @Inject constructor(
     val listOfMoviesState = _listOfMoviesState.asStateFlow()
 
     fun getMovies() {
-        viewModelScope.launch {
+        viewModelScope.launch(testDispatcher) {
             moviesUseCase.getMovies().collect { resultMovies ->
                 when (resultMovies) {
                     is ResultMovies.Success -> {
