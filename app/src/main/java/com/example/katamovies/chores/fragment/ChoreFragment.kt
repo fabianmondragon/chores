@@ -5,10 +5,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.domain.chore.dto.AssignedChoreRespondD
 import com.example.domain.chore.dto.ChoreRespondD
 import com.example.katamovies.chores.screen.ScreenChore
 import com.example.katamovies.chores.viewmodel.ChoreViewModel
-import com.example.katamovies.movies.MoviesViewModel
 
 @Composable
 fun ChoreFragment (
@@ -17,8 +17,8 @@ fun ChoreFragment (
     email: String
 ){
     choreViewModel.getChores(email)
-    val chores by choreViewModel.choreRespondD.collectAsState(initial = ChoreRespondD())
-    ScreenChore( email)
+    val chores by choreViewModel.choreRespondD.collectAsState(initial = AssignedChoreRespondD())
+    ScreenChore( email, chores)
 }
 
 

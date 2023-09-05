@@ -4,6 +4,7 @@ import com.example.data.chore.datasource.realtimedatabase.model.AssignedChoreRes
 import com.example.data.chore.datasource.realtimedatabase.model.ChoreRespond
 import com.example.data.chore.datasource.realtimedatabase.model.InfoUserRespond
 import com.example.data.chore.datasource.realtimedatabase.model.ScheduleRespond
+import com.example.data.utils.transformToDate
 import com.example.domain.chore.dto.AssignedChoreRespondD
 import com.example.domain.chore.dto.ChoreRespondD
 import com.example.domain.chore.dto.InfoUserRespondD
@@ -48,7 +49,7 @@ private fun List<ScheduleRespond>.toListScheduleRespondDomain(): MutableList<Sch
                 scheduleId = it.scheduleId,
                 completed = it.completed,
                 day = it.day,
-                scheduleDate = it.scheduleDate,
+                scheduleDate = it.scheduleDate.transformToDate(),
             )
         )
     }

@@ -26,6 +26,22 @@ class CustomText {
                 onClick.invoke()
             })
         }
+
+        @Composable
+        fun CustomTextBold(
+            onClick: () -> Unit,
+            text: String
+        ) {
+            val annotatedString = buildAnnotatedString() {
+                pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
+                append(text)
+                pop()
+            }
+
+            ClickableText(text = annotatedString, onClick = {
+                onClick.invoke()
+            })
+        }
     }
 
 }
